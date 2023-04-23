@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import BalanceWidget from './components/BalanceWidget.vue';
+
 </script>
-
 <template>
-  <div></div>
+  <div>
+    <BalanceWidget />
+  </div>
 </template>
-
-<style scoped lang="scss">
-</style>

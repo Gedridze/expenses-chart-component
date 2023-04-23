@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Inter:wght@700&display=swap');
 $soft-red: hsl(10, 79%, 65%);
 $cyan: hsl(186, 34%, 60%);
 $dark-brown: hsl(25, 47%, 15%);
@@ -7,6 +8,8 @@ $very-pale-orange: hsl(33, 100%, 98%);
 
 * {
   margin: unset;
+  font-family: 'DM Sans', sans-serif;
+  color: $very-pale-orange;
 }
 
 html {
@@ -15,4 +18,5 @@ html {
 
 body {
   background-color: $cream;
+  font-size: 1.8rem;
 }
