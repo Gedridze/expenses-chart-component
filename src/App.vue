@@ -33,21 +33,24 @@ const data = chartData as SpendingData
 @import '@/main.scss';
 
 .chart {
-  height: 30rem;
+  flex: 1;
 }
 
 .content-wrapper {
   flex:1;
   max-width: 80rem;
-  height: 80vh;
+  height: 80%;
   margin:0 3rem;
 }
 .header {
   margin-bottom: 4rem;
 }
 .main-container {
+  height: 50rem;
   padding: 3rem;
   background-color: $very-pale-orange;
+  display: flex;
+  flex-direction: column;
 }
 h2 {
   color: $dark-brown;
