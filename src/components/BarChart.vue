@@ -20,7 +20,11 @@ const columnSizes = computed(() => {
     <div class="header"></div>
     <div class="chart-container">
       <template v-for="(dataItem, index) in data" :key="index">
-        <div class="column" :style="{ height: `${columnSizes[index]}%` }" :class="{'column--highest': dataItem === maxColumnValue}">
+        <div
+          class="column"
+          :style="{ height: `${columnSizes[index]}%` }"
+          :class="{ 'column--highest': dataItem === maxColumnValue }"
+        >
           <div class="data-hint">${{ dataItem }}</div>
         </div>
       </template>
@@ -40,34 +44,46 @@ const columnSizes = computed(() => {
   display: flex;
   align-items: end;
   margin-bottom: 1rem;
-}
-.column {
-  position: relative;
-  margin: 0 1rem;
-  flex: 1;
-  &:after {
-    content: ' ';
-    height: 100%;
-    width: 100%;
-  background-color: $soft-red;
-  display: block;
-  border-radius: 1rem;
-
-  }
-
-  &:hover {
+  .column {
+    position: relative;
+    margin: 0 1rem;
+    flex: 1;
     &:after {
-      opacity: 80%;
+      content: ' ';
+      height: 100%;
+      width: 100%;
+      background-color: $soft-red;
+      display: block;
+      border-radius: 1rem;
+    }
 
+    &:hover {
+      &:after {
+        opacity: 80%;
+      }
+      .data-hint {
+        visibility: visible;
+      }
     }
     .data-hint {
-      visibility: visible;
+      visibility: hidden;
+      font-weight: bold;
+      border-radius: 1rem;
+      width: calc(100% + 0.25rem);
+      top: -6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      height: 5rem;
+      line-height: 2.5;
+      position: absolute;
+      background-color: $dark-brown;
+      font-size: 2rem;
     }
   }
-}
-
-.column--highest::after {
-  background-color: $cyan;
+  .column--highest::after {
+    background-color: $cyan;
+  }
 }
 
 .label-container {
@@ -79,22 +95,6 @@ const columnSizes = computed(() => {
     text-align: center;
     color: $medium-brown;
   }
-}
-
-.data-hint {
-  visibility: hidden;
-  font-weight: bold;
-  border-radius: 1rem;
-  width: calc(100% + 0.25rem);
-  top: -6rem;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  height: 5rem;
-  line-height: 2.5;
-  position: absolute;
-  background-color: $dark-brown;
-  font-size: 2rem;
 }
 @media only screen and (max-width: 600px) {
   .data-hint {
