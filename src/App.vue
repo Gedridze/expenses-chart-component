@@ -1,19 +1,27 @@
 <script setup lang="ts">
 import BalanceWidget from './components/BalanceWidget.vue'
+import BarChart from './components/BarChart.vue'
+import chartData from './data.json'
+import type { SpendingData } from './types'
+
+const data = chartData as SpendingData
 </script>
 <template>
-  <BalanceWidget />
-  <div class="main-container rounded">
-    <h2>Spending - Last 7 days</h2>
-    <div class="divider"></div>
-    <div class="footer">
-      <div class="footer-content">
-        <h5>Total this month</h5>
-        <div class="content">
-          <p>$478.33</p>
-          <div class="extra-content">
-            <p>+2.4%</p>
-            <p>from last month</p>
+  <div class="content-wrapper">
+    <BalanceWidget class="header" />
+    <div class="main-container rounded">
+      <h2>Spending - Last 7 days</h2>
+      <BarChart  class="chart" :labels="data.map((el) => el.day)" :data="data.map((el) => el.amount)" />
+      <div class="divider"></div>
+      <div class="footer">
+        <div class="footer-content">
+          <h5>Total this month</h5>
+          <div class="content">
+            <p>$478.33</p>
+            <div class="extra-content">
+              <p>+2.4%</p>
+              <p>from last month</p>
+            </div>
           </div>
         </div>
       </div>
@@ -23,6 +31,20 @@ import BalanceWidget from './components/BalanceWidget.vue'
 
 <style lang="scss" scoped>
 @import '@/main.scss';
+
+.chart {
+  height: 30rem;
+}
+
+.content-wrapper {
+  flex:1;
+  max-width: 80rem;
+  height: 80vh;
+  margin:0 3rem;
+}
+.header {
+  margin-bottom: 4rem;
+}
 .main-container {
   padding: 3rem;
   background-color: $very-pale-orange;
@@ -51,12 +73,13 @@ h2 {
         font-weight: bold;
       }
       p:last-child {
-        color: $medium-brown
+        color: $medium-brown;
       }
     }
   }
 }
 .divider {
   border: 1px solid $cream;
+  margin: 3rem 0
 }
 </style>
