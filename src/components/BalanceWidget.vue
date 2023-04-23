@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container rounded">
     <div class="content">
       <h5>My balance</h5>
       <p>$921.48</p>
@@ -12,7 +12,6 @@
 .container {
   display: flex;
   padding: 2rem 3rem;
-  border-radius: 2rem;
   background-color: $soft-red;
   justify-content: space-between;
   .content {
